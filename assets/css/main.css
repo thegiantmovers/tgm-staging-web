@@ -2040,15 +2040,15 @@ section,
     position: fixed;
     width: 60px;
     height: 60px;
-    bottom: 40px; /* Adjust as needed, considering scroll-top button if present */
-    right: 40px; /* Adjust as needed */
-    background-color: #25d366; /* WhatsApp brand green */
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366;
     color: #FFF;
     border-radius: 50px;
     text-align: center;
     font-size: 30px;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
-    z-index: 1000; /* Ensure it's above other elements */
+    z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2056,15 +2056,15 @@ section,
 }
 
 .whatsapp-float:hover {
-    background-color: #128C7E; /* Darker green on hover */
-    color: #FFF; /* Keep text white on hover */
-    transform: scale(1.05); /* Slightly enlarge on hover */
+    background-color: #128C7E;
+    color: #FFF;
+    transform: scale(1.05);
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6);
 }
 
 /* Adjust position if scroll-top button is also present */
 body .scroll-top {
-    bottom: 100px; /* Move scroll-top up to avoid overlap with WhatsApp button */
+    bottom: 100px;
 }
 
 /* Responsive adjustments for smaller screens */
@@ -2077,7 +2077,7 @@ body .scroll-top {
         font-size: 25px;
     }
     body .scroll-top {
-        bottom: 80px; /* Adjust scroll-top for mobile if needed */
+        bottom: 80px;
     }
 }
 /*--------------------------------------------------------------
