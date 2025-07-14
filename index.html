@@ -158,7 +158,105 @@
         </div>
       </div>
 
-    </section><section id="featured-services" class="featured-services section">
+    </section>
+    <section id="get-a-quote" class="get-a-quote section">
+
+      <div class="container">
+
+        <div class="row g-0" data-aos="fade-up" data-aos-delay="100">
+
+          <div class="col-lg-5 quote-bg" style="background-image: url(assets/img/quote-bg.jpg);"></div>
+
+          <div class="col-lg-7" data-aos="fade-up" data-aos-delay="200">
+            <form id="quoteForm" action="forms/send_quote.php" method="post" class="php-email-form">
+              <h3>Request Your Moving Estimate</h3>
+              <p>Provide us with details about your upcoming relocation in the UAE, and our team will prepare a precise and transparent quote for you.</p>
+
+              <div class="row gy-4">
+
+                <div class="col-md-6">
+                  <input type="text" name="departure_location" id="departure_location" class="form-control" placeholder="Current Location (e.g., Dubai Marina, Al Barsha)" required>
+                </div>
+
+                <div class="md-6">
+                  <input type="text" name="delivery_location" id="delivery_location" class="form-control" placeholder="Destination (e.g., Abu Dhabi, Jumeirah Village Circle)" required>
+                </div>
+
+                <div class="col-md-6">
+                  <input type="date" name="preferred_move_date" id="preferred_move_date" class="form-control" placeholder="Preferred Moving Date" required>
+                </div>
+
+                <div class="col-md-6">
+                  <select name="type_of_property" id="type_of_property" class="form-control" required>
+                    <option value="">Select Type of Property</option>
+                    <option value="apartment">Apartment</option>
+                    <option value="villa">Villa</option>
+                    <option value="office">Office / Commercial</option>
+                    <option value="warehouse">Warehouse</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
+                <div class="col-md-6">
+                  <select name="number_of_bedrooms" id="number_of_bedrooms" class="form-control">
+                    <option value="">Number of Bedrooms (if residential)</option>
+                    <option value="studio">Studio</option>
+                    <option value="1_bedroom">1 Bedroom</option>
+                    <option value="2_bedrooms">2 Bedrooms</option>
+                    <option value="3_bedrooms">3 Bedrooms</option>
+                    <option value="4_plus_bedrooms">4+ Bedrooms</option>
+                  </select>
+                </div>
+
+                <div class="col-md-6">
+                  <select name="service_needed" id="service_needed" class="form-control" required>
+                    <option value="">Select Service Needed</option>
+                    <option value="residential_moving">Residential Moving</option>
+                    <option value="commercial_moving">Commercial Moving</option>
+                    <option value="international_moving">International Relocation</option>
+                    <option value="packing_only">Packing Services Only</option>
+                    <option value="storage_only">Storage Solutions Only</option>
+                    <option value="full_service">Full-Service Moving (Packing, Moving, Unpacking)</option>
+                    <option value="other_service">Other Moving Service</option>
+                  </select>
+                </div>
+
+                <div class="col-lg-12">
+                  <h4>Your Contact Details</h4>
+                </div>
+
+                <div class="col-12">
+                  <input type="text" name="name" id="name" class="form-control" placeholder="Your Full Name" required>
+                </div>
+
+                <div class="col-12 ">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email Address" required>
+                </div>
+
+                <div class="col-12">
+                  <input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone Number (e.g., +971 50 123 4567)" required>
+                </div>
+
+                <div class="col-12">
+                  <textarea class="form-control" name="additional_message" id="additional_message" rows="6" placeholder="Tell us more about your specific moving requirements, any special items, or questions you may have." required></textarea>
+                </div>
+
+                <div class="col-12 text-center">
+                  <div class="loading">Sending your request...</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Your moving quote request has been sent successfully. Thank you!</div>
+
+                  <button type="submit">Get Your Free Quote</button>
+                </div>
+
+              </div>
+            </form>
+          </div></div>
+
+      </div>
+
+    </section>
+    <section id="featured-services" class="featured-services section">
 
       <div class="container">
 
