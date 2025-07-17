@@ -168,11 +168,9 @@
 
       <div class="container">
 
-        <div class="row g-0" data-aos="fade-up" data-aos-delay="100">
-
-          <div class="col-lg-5 quote-bg" style="background-image: url(assets/img/quote-bg.jpg);"></div>
-
-          <div class="col-lg-7" data-aos="fade-up" data-aos-delay="200">
+        <div class="row g-0 justify-content-center" data-aos="fade-up" data-aos-delay="100">
+          <!-- Removed col-lg-5 quote-bg column -->
+          <div class="col-12 col-lg-10" data-aos="fade-up" data-aos-delay="200"> <!-- Adjusted to full width -->
             <form id="quoteForm" action="forms/send_quote.php" method="post" class="php-email-form">
               <h3>Request Your Moving Estimate</h3>
               <p>Provide us with details about your upcoming relocation in the UAE, and our team will prepare a precise and transparent quote for you.</p>
@@ -183,7 +181,7 @@
                   <input type="text" name="departure_location" id="departure_location" class="form-control" placeholder="Current Location (e.g., Dubai Marina, Al Barsha)" required>
                 </div>
 
-                <div class="md-6">
+                <div class="col-md-6"> <!-- Changed md-6 to col-md-6 for consistency -->
                   <input type="text" name="delivery_location" id="delivery_location" class="form-control" placeholder="Destination (e.g., Abu Dhabi, Jumeirah Village Circle)" required>
                 </div>
 
@@ -256,11 +254,14 @@
 
               </div>
             </form>
-          </div></div>
+          </div><!-- End Quote Form -->
+
+        </div>
 
       </div>
 
-    </section>
+    </section><!-- /Get A Quote Section -->
+
     <section id="featured-services" class="featured-services section">
 
       <div class="container">
