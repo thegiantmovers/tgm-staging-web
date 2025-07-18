@@ -222,15 +222,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <div class="row gy-4">
 
                 <div class="col-md-6">
-                  <input type="text" name="departure_location" id="departure_location" class="form-control" placeholder="Current Location (e.g., Dubai Marina, Al Barsha)" required>
+                <input type="text" name="departure_location" id="departure_location" class="form-control" placeholder="Current Location (e.g., Dubai Marina, Al Barsha)" required autocomplete="address-level2">
                 </div>
 
                 <div class="col-md-6"> <!-- Changed md-6 to col-md-6 for consistency -->
-                  <input type="text" name="delivery_location" id="delivery_location" class="form-control" placeholder="Destination (e.g., Abu Dhabi, Jumeirah Village Circle)" required>
+                  <input type="text" name="delivery_location" id="delivery_location" class="form-control" placeholder="Destination (e.g., Abu Dhabi, Jumeirah Village Circle)" required autocomplete="address-level2">
                 </div>
 
                 <div class="col-md-6">
-                  <input type="date" name="preferred_move_date" id="preferred_move_date" class="form-control" placeholder="Preferred Moving Date" required>
+                <input type="date" name="preferred_move_date" id="preferred_move_date" class="form-control" placeholder="Preferred Moving Date" required autocomplete="off"> <!-- Dates usually don't need autofill -->
                 </div>
 
                 <div class="col-md-6">
@@ -273,15 +273,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
 
                 <div class="col-12">
-                  <input type="text" name="name" id="name" class="form-control" placeholder="Your Full Name" required>
+                <input type="text" name="name" id="name" class="form-control" placeholder="Your Full Name" required autocomplete="name">
                 </div>
 
                 <div class="col-12 ">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email Address" required>
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email Address" required autocomplete="email">
                 </div>
 
                 <div class="col-12">
-                  <input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone Number (e.g., +971 50 123 4567)" required>
+                <input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone Number (e.g., +971 50 123 4567)" required autocomplete="tel">
                 </div>
 
                 <div class="col-12">
