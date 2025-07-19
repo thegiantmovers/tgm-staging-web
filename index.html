@@ -237,40 +237,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <input type="date" name="preferred_move_date" id="preferred_move_date" class="form-control" placeholder="Preferred Moving Date" required autocomplete="off"> <!-- Dates usually don't need autofill -->
                 </div>
 
-                <div class="col-md-6">
-                  <select name="type_of_property" id="type_of_property" class="form-control" required>
-                    <option value="">Select Type of Property</option>
-                    <option value="apartment">Apartment</option>
-                    <option value="villa">Villa</option>
-                    <option value="office">Office / Commercial</option>
-                    <option value="warehouse">Warehouse</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
+               <div class="col-md-6">
+  <label for="type_of_property" class="form-label visually-hidden">Select Type of Property</label> <!-- Added label -->
+  <select name="type_of_property" id="type_of_property" class="form-control" required autocomplete="off">
+    <option value="">Select Type of Property</option>
+    <option value="apartment">Apartment</option>
+    <option value="villa">Villa</option>
+    <option value="office">Office / Commercial</option>
+    <option value="warehouse">Warehouse</option>
+    <option value="other">Other</option>
+  </select>
+</div>
 
                 <div class="col-md-6">
-                  <select name="number_of_bedrooms" id="number_of_bedrooms" class="form-control">
-                    <option value="">Number of Bedrooms (if residential)</option>
-                    <option value="studio">Studio</option>
-                    <option value="1_bedroom">1 Bedroom</option>
-                    <option value="2_bedrooms">2 Bedrooms</option>
-                    <option value="3_bedrooms">3 Bedrooms</option>
-                    <option value="4_plus_bedrooms">4+ Bedrooms</option>
-                  </select>
-                </div>
+  <label for="number_of_bedrooms" class="form-label visually-hidden">Number of Bedrooms (if residential)</label> <!-- Added label -->
+  <select name="number_of_bedrooms" id="number_of_bedrooms" class="form-control" autocomplete="off">
+    <option value="">Number of Bedrooms (if residential)</option>
+    <option value="studio">Studio</option>
+    <option value="1_bedroom">1 Bedroom</option>
+    <option value="2_bedrooms">2 Bedrooms</option>
+    <option value="3_bedrooms">3 Bedrooms</option>
+    <option value="4_plus_bedrooms">4+ Bedrooms</option>
+  </select>
+</div>
 
                 <div class="col-md-6">
-                  <select name="service_needed" id="service_needed" class="form-control" required>
-                    <option value="">Select Service Needed</option>
-                    <option value="residential_moving">Residential Moving</option>
-                    <option value="commercial_moving">Commercial Moving</option>
-                    <option value="international_moving">International Relocation</option>
-                    <option value="packing_only">Packing Services Only</option>
-                    <option value="storage_only">Storage Solutions Only</option>
-                    <option value="full_service">Full-Service Moving (Packing, Moving, Unpacking)</option>
-                    <option value="other_service">Other Moving Service</option>
-                  </select>
-                </div>
+  <label for="service_needed" class="form-label visually-hidden">Select Service Needed</label> <!-- Added label -->
+  <select name="service_needed" id="service_needed" class="form-control" required autocomplete="off">
+    <option value="">Select Service Needed</option>
+    <option value="residential_moving">Residential Moving</option>
+    <option value="commercial_moving">Commercial Moving</option>
+    <option value="international_moving">International Relocation</option>
+    <option value="packing_only">Packing Services Only</option>
+    <option value="storage_only">Storage Solutions Only</option>
+    <option value="full_service">Full-Service Moving (Packing, Moving, Unpacking)</option>
+    <option value="other_service">Other Moving Service</option>
+  </select>
+</div>
 
                 <div class="col-lg-12">
                   <h4>Your Contact Details</h4>
@@ -350,7 +353,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
           <div class="col-lg-6 position-relative align-self-start order-lg-last order-first" data-aos="fade-up" data-aos-delay="200">
             <img src="assets/img/about.webp" class="img-fluid" alt="The Giant Movers team moving furniture in Dubai" width="1024" height="768" loading="lazy">
-            <a href="https://storage.googleapis.com/tgm-data/videos/herodesk.mp4" class="glightbox pulsating-play-btn"></a>
+            <a href="https://storage.googleapis.com/tgm-data/videos/herodesk.mp4" class="glightbox pulsating-play-btn" aria-label="Watch Company Introduction Video"></a>
           </div>
 
           <div class="col-lg-6 content order-last  order-lg-first" data-aos="fade-up" data-aos-delay="100">
@@ -362,7 +365,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <li>
                 <i class="bi bi-check-circle"></i>
                 <div>
-                  <h5>Trained & Skilled Professionals ("Trained Giants")</h5>
+                  <h4>Trained & Skilled Professionals ("Trained Giants")</h4>
                   <p>Our team executes the moving process with utmost care and diligence, ensuring safety and efficiency.</p>
                 </div>
               </li>
@@ -736,12 +739,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p>Your trusted partner for hassle-free residential and commercial moving, packing, and storage services in Dubai. Experience a seamless relocation with our expert team.</p>
           <div class="social-links d-flex mt-4">
             
-            <a href="https://www.facebook.com/thegiantmover"><i class="bi bi-facebook"></i></a>
-            <a href="https://www.instagram.com/thegiantmover/"><i class="bi bi-instagram"></i></a>
-            <a href="https://x.com/thegiantmovers"><i class="bi bi-twitter-x"></i></a>
-            <a href="https://www.linkedin.com/in/the-giant-movers-277900265/"><i class="bi bi-linkedin"></i></a>
-            <a href="https://www.youtube.com/@thegiantmovers"><i class="bi bi-youtube"></i></a>
-            <a href="https://api.whatsapp.com/send/?phone=971555372591&text&type=phone_number&app_absent=0"><i class="bi bi-whatsapp"></i></a>
+            <a href="https://www.facebook.com/thegiantmover" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/thegiantmovers/" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://x.com/thegiantmovers" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+            <a href="https://www.linkedin.com/in/the-giant-movers-277900265/" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="https://www.youtube.com/@thegiantmovers" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+            <a href="https://api.whatsapp.com/send/?phone=971555372591&text&type=phone_number&app_absent=0" target="_blank" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
           </div>
         </div>
 
