@@ -38,7 +38,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $preferred_move_date = filter_var($_POST['preferred_move_date'] ?? '', FILTER_SANITIZE_STRING);
     $type_of_property = filter_var($_POST['type_of_property'] ?? '', FILTER_SANITIZE_STRING);
     $number_of_bedrooms = isset($_POST['number_of_bedrooms']) ? filter_var($_POST['number_of_bedrooms'], FILTER_SANITIZE_STRING) : 'Not specified';
-    $service_needed = filter_var($_POST['service_needed'] ?? '', FILTER_SANITIZE_STRING);
+    // --- START OF CHANGE ---
+    $additional_services = isset($_POST['additional_services']) ? $_POST['additional_services'] : [];
+    // If multiple checkboxes are selected, $additional_services will be an array.
+    // We need to format it into a readable string.
+    $formatted_additional_services = !empty($additional_services) ? implode(", ", array_map('htmlspecialchars', $additional_services)) : 'None selected';
+    // --- END OF CHANGE ---
     $additional_message = filter_var($_POST['additional_message'] ?? '', FILTER_SANITIZE_STRING);
 
     // Basic validation (you can add more robust validation here)
@@ -60,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email_body_text .= "Preferred Move Date: " . $preferred_move_date . "\n";
     $email_body_text .= "Type of Property: " . $type_of_property . "\n";
     $email_body_text .= "Number of Bedrooms: " . $number_of_bedrooms . "\n";
-    $email_body_text .= "Service Needed: " . $service_needed . "\n\n";
+    $email_body_text .= "Additional Services: " . $formatted_additional_services . "\n\n"; // Use the formatted string
     $email_body_text .= "Additional Message:\n" . $additional_message . "\n";
 
     // HTML version of the email body for better formatting
@@ -77,12 +82,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <tr><td style='background-color:#f2f2f2;'><strong>Preferred Move Date:</strong></td><td>" . htmlspecialchars($preferred_move_date) . "</td></tr>
             <tr><td style='background-color:#f2f2f2;'><strong>Type of Property:</strong></td><td>" . htmlspecialchars($type_of_property) . "</td></tr>
             <tr><td style='background-color:#f2f2f2;'><strong>Number of Bedrooms:</strong></td><td>" . htmlspecialchars($number_of_bedrooms) . "</td></tr>
-            <tr><td style='background-color:#f2f2f2;'><strong>Service Needed:</strong></td><td>" . htmlspecialchars($service_needed) . "</td></tr>
+            <tr><td style='background-color:#f2f2f2;'><strong>Additional Services:</strong></td><td>" . $formatted_additional_services . "</td></tr>
             <tr><td style='background-color:#e0e0e0;'><strong>Additional Message:</strong></td><td>" . nl2br(htmlspecialchars($additional_message)) . "</td></tr>
         </table>
         <p>Best regards,<br>Website Visitor</p>
     ";
-
 
     // --- PHPMailer Configuration ---
     $mail = new PHPMailer(true); // Passing `true` enables exceptions
