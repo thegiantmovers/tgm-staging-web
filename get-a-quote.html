@@ -131,7 +131,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div><!-- End Page Title -->
 
-        <section id="get-a-quote" class="get-a-quote section">
+<section id="get-a-quote" class="get-a-quote section">
 
       <div class="container">
 
@@ -183,13 +183,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
 
                 <div class="col-md-6">
-                  <label for="additional_services" class="form-label">Select Additional Services</label> <!-- Changed title and added label -->
-                  <select name="additional_services[]" id="additional_services" class="form-control" multiple autocomplete="off" size="4"> <!-- Added multiple and size -->
-                    <option value="storage_services">Storage Services</option>
-                    <option value="painting_services">Painting Services</option>
-                    <option value="cleaning_services">Cleaning Services</option>
-                    <option value="maintenance_services">Maintenance Services</option>
-                  </select>
+                  <label class="form-label">Select Additional Services</label> <!-- Visible label for checkbox group -->
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="additional_services[]" value="storage_services" id="service_storage">
+                    <label class="form-check-label" for="service_storage">
+                      Storage Services
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="additional_services[]" value="painting_services" id="service_painting">
+                    <label class="form-check-label" for="service_painting">
+                      Painting Services
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="additional_services[]" value="cleaning_services" id="service_cleaning">
+                    <label class="form-check-label" for="service_cleaning">
+                      Cleaning Services
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="additional_services[]" value="maintenance_services" id="service_maintenance">
+                    <label class="form-check-label" for="service_maintenance">
+                      Maintenance Services
+                    </label>
+                  </div>
                 </div>
 
                 <div class="col-lg-12">
@@ -233,6 +251,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
     </section><!-- /Get A Quote Section -->
+     
 
   </main>
 
