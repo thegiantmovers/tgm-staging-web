@@ -131,13 +131,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div><!-- End Page Title -->
 
-    <section id="get-a-quote" class="get-a-quote section">
+        <section id="get-a-quote" class="get-a-quote section">
 
       <div class="container">
 
         <div class="row g-0 justify-content-center" data-aos="fade-up" data-aos-delay="100">
-          <!-- Removed col-lg-5 quote-bg column -->
-          <div class="col-12 col-lg-10" data-aos="fade-up" data-aos-delay="200"> <!-- Adjusted to full width -->
+          <div class="col-12 col-lg-10" data-aos="fade-up" data-aos-delay="200">
             <form id="quoteForm" action="forms/send_quote.php" method="post" class="php-email-form">
               <h3>Request Your Moving Estimate</h3>
               <p>Provide us with details about your upcoming relocation in the UAE, and our team will prepare a precise and transparent quote for you.</p>
@@ -145,19 +144,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <div class="row gy-4">
 
                 <div class="col-md-6">
+                  <label for="departure_location" class="form-label visually-hidden">Current Location (e.g., Dubai Marina, Al Barsha)</label>
                   <input type="text" name="departure_location" id="departure_location" class="form-control" placeholder="Current Location (e.g., Dubai Marina, Al Barsha)" required autocomplete="address-level2">
                 </div>
 
-                <div class="col-md-6"> <!-- Changed md-6 to col-md-6 for consistency -->
-               <input type="text" name="delivery_location" id="delivery_location" class="form-control" placeholder="Destination (e.g., Abu Dhabi, Jumeirah Village Circle)" required autocomplete="address-level2">
+                <div class="col-md-6">
+                  <label for="delivery_location" class="form-label visually-hidden">Destination (e.g., Abu Dhabi, Jumeirah Village Circle)</label>
+                  <input type="text" name="delivery_location" id="delivery_location" class="form-control" placeholder="Destination (e.g., Abu Dhabi, Jumeirah Village Circle)" required autocomplete="address-level2">
                 </div>
 
                 <div class="col-md-6">
-                  <input type="date" name="preferred_move_date" id="preferred_move_date" class="form-control" placeholder="Preferred Moving Date" required autocomplete="off"> <!-- Dates usually don't need autofill -->
+                  <label for="preferred_move_date" class="form-label visually-hidden">Preferred Moving Date</label>
+                  <input type="date" name="preferred_move_date" id="preferred_move_date" class="form-control" placeholder="Preferred Moving Date" required autocomplete="off">
                 </div>
 
                 <div class="col-md-6">
-                  <select name="type_of_property" id="type_of_property" class="form-control" required>
+                  <label for="type_of_property" class="form-label visually-hidden">Select Type of Property</label>
+                  <select name="type_of_property" id="type_of_property" class="form-control" required autocomplete="off">
                     <option value="">Select Type of Property</option>
                     <option value="apartment">Apartment</option>
                     <option value="villa">Villa</option>
@@ -168,7 +171,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
 
                 <div class="col-md-6">
-                  <select name="number_of_bedrooms" id="number_of_bedrooms" class="form-control">
+                  <label for="number_of_bedrooms" class="form-label visually-hidden">Number of Bedrooms (if residential)</label>
+                  <select name="number_of_bedrooms" id="number_of_bedrooms" class="form-control" autocomplete="off">
                     <option value="">Number of Bedrooms (if residential)</option>
                     <option value="studio">Studio</option>
                     <option value="1_bedroom">1 Bedroom</option>
@@ -179,15 +183,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
 
                 <div class="col-md-6">
-                  <select name="service_needed" id="service_needed" class="form-control" required>
-                    <option value="">Select Service Needed</option>
-                    <option value="residential_moving">Residential Moving</option>
-                    <option value="commercial_moving">Commercial Moving</option>
-                    <option value="international_moving">International Relocation</option>
-                    <option value="packing_only">Packing Services Only</option>
-                    <option value="storage_only">Storage Solutions Only</option>
-                    <option value="full_service">Full-Service Moving (Packing, Moving, Unpacking)</option>
-                    <option value="other_service">Other Moving Service</option>
+                  <label for="additional_services" class="form-label">Select Additional Services</label> <!-- Changed title and added label -->
+                  <select name="additional_services[]" id="additional_services" class="form-control" multiple autocomplete="off" size="4"> <!-- Added multiple and size -->
+                    <option value="storage_services">Storage Services</option>
+                    <option value="painting_services">Painting Services</option>
+                    <option value="cleaning_services">Cleaning Services</option>
+                    <option value="maintenance_services">Maintenance Services</option>
                   </select>
                 </div>
 
@@ -196,18 +197,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
 
                 <div class="col-12">
+                  <label for="name" class="form-label visually-hidden">Your Full Name</label>
                   <input type="text" name="name" id="name" class="form-control" placeholder="Your Full Name" required autocomplete="name">
                 </div>
 
-                <div class="col-12 ">
+                <div class="col-12">
+                  <label for="email" class="form-label visually-hidden">Your Email Address</label>
                   <input type="email" class="form-control" name="email" id="email" placeholder="Your Email Address" required autocomplete="email">
                 </div>
 
                 <div class="col-12">
+                  <label for="phone" class="form-label visually-hidden">Your Phone Number (e.g., +971 50 123 4567)</label>
                   <input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone Number (e.g., +971 50 123 4567)" required autocomplete="tel">
                 </div>
 
                 <div class="col-12">
+                  <label for="additional_message" class="form-label visually-hidden">Tell us more about your specific moving requirements, any special items, or questions you may have.</label>
                   <textarea class="form-control" name="additional_message" id="additional_message" rows="6" placeholder="Tell us more about your specific moving requirements, any special items, or questions you may have." required></textarea>
                 </div>
 
