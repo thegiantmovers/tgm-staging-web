@@ -89,6 +89,13 @@ h6 {
   font-family: var(--heading-font);
 }
 
+/* ADDED: General responsive image rule */
+img {
+    max-width: 100%;
+    height: auto; /* Ensures aspect ratio is maintained */
+    vertical-align: middle;
+}
+
 /* Pulsating Play Button
 ------------------------------*/
 .pulsating-play-btn {
@@ -238,7 +245,8 @@ h6 {
 }
 
 .header .logo img {
-  max-height: 50px;
+  max-height: 50px; /* Keep the desired maximum height */
+  width: auto;     /* CRUCIAL: This makes the width scale proportionally */
   margin-right: 8px;
 }
 
@@ -696,18 +704,12 @@ h6 {
 
 @keyframes animate-preloader {
   0% {
-    width: 10px;
-    height: 10px;
-    top: calc(50% - 5px);
-    left: calc(50% - 5px);
+    transform: scale(0.6, 0.6);
     opacity: 1;
   }
 
   100% {
-    width: 72px;
-    height: 72px;
-    top: calc(50% - 36px);
-    left: calc(50% - 36px);
+    transform: scale(1, 1);
     opacity: 0;
   }
 }
