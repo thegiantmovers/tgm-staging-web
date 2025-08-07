@@ -16,7 +16,6 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 // Load environment variables from .env file
-// Assuming .env is in the project root (one level up from 'forms')
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
 
@@ -96,10 +95,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Server settings
         $mail->SMTPDebug = SMTP::DEBUG_OFF;
         $mail->isSMTP();
-        $mail->Host       = $_ENV['SMTP_HOST']; 
+        $mail->Host       = $_ENV['SMTP_HOST'];
         $mail->SMTPAuth   = true;
-        $mail->Username   = $_ENV['SMTP_USERNAME']; 
-        $mail->Password   = $_ENV['SMTP_PASSWORD']; 
+        $mail->Username   = $_ENV['SMTP_USERNAME'];
+        $mail->Password   = $_ENV['SMTP_PASSWORD'];
         
         // Determine SMTPSecure based on .env value
         if ($_ENV['SMTP_SECURE'] === 'ssl') {
@@ -113,7 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Port       = $_ENV['SMTP_PORT'];              
 
         // Recipients
-        $mail->setFrom($_ENV['SENDER_EMAIL'], $_ENV['SENDER_NAME']); 
+        $mail->setFrom($_ENV['SENDER_EMAIL'], $_ENV['SENDER_NAME']);
         $mail->addAddress($receiving_email_address); // Add recipient
         $mail->addReplyTo($email, $name); // Reply to the client's email
 
