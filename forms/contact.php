@@ -65,10 +65,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     try {
         // Server settings
-        $mail->SMTPDebug = SMTP::DEBUG_OFF; // Set to SMTP::DEBUG_SERVER for detailed debug output
-        $mail->isSMTP();                     // Send using SMTP
+        $mail->SMTPDebug = SMTP::DEBUG_OFF;
+        $mail->isSMTP();
         $mail->Host       = $_ENV['SMTP_HOST']; 
-        $mail->SMTPAuth   = true;             // Enable SMTP authentication
+        $mail->SMTPAuth   = true;
         $mail->Username   = $_ENV['SMTP_USERNAME']; 
         $mail->Password   = $_ENV['SMTP_PASSWORD']; 
         
@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } elseif ($_ENV['SMTP_SECURE'] === 'tls') {
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         } else {
-            $mail->SMTPSecure = false; // No encryption
+            $mail->SMTPSecure = false;
         }
 
         $mail->Port       = $_ENV['SMTP_PORT'];              
@@ -89,23 +89,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->addReplyTo($email, $name); // Reply to the client's email
 
         // Content
-        $mail->isHTML(true); // Set email format to HTML
+        $mail->isHTML(true);
         $mail->Subject = $email_subject;
         $mail->Body    = $email_body_html;
-        $mail->AltBody = $email_body_text; // Plain text for non-HTML mail clients
+        $mail->AltBody = $email_body_text;
 
         $mail->send();
-        echo 'OK'; // IMPORTANT: Send 'OK' string on success for validate.js
+        
+        // Success: Redirect to the thank you page
+        header('Location: ../thank-you.html');
         exit;
 
     } catch (Exception $e) {
         // Failure: Send error message for validate.js
-        error_log("Message could not be sent. Mailer Error: {$mail->ErrorInfo}"); // Log the error for debugging
-        echo "Message could not be sent. Please try again later. Mailer Error: {$mail->ErrorInfo}"; // Send error to client
+        error_log("Message could not be sent. Mailer Error: {$mail->ErrorInfo}");
+        http_response_code(500); // Set HTTP status code to 500 for error
+        echo "Message could not be sent. Please try again later. Mailer Error: {$mail->ErrorInfo}";
         exit;
     }
 } else {
     // Not a POST request, redirect or show an error
+    http_response_code(405);
     echo "Invalid request method.";
     exit;
 }
