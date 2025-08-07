@@ -20,6 +20,35 @@ use PHPMailer\PHPMailer\Exception;
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
 $dotenv->load();
 
+// --- Recaptcha Verification ---
+$recaptcha_secret = $_ENV['RECAPTCHA_SECRET_KEY'];
+$recaptcha_token = $_POST['recaptcha-response'] ?? '';
+$recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
+$recaptcha_data = [
+    'secret' => $recaptcha_secret,
+    'response' => $recaptcha_token
+];
+
+$options = [
+    'http' => [
+        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+        'method'  => 'POST',
+        'content' => http_build_query($recaptcha_data)
+    ]
+];
+
+$context  = stream_context_create($options);
+$result = file_get_contents($recaptcha_url, false, $context);
+$recaptcha_response = json_decode($result, true);
+
+// Check if reCAPTCHA verification was successful and has a good score
+if (!$recaptcha_response['success'] || $recaptcha_response['score'] < 0.5) {
+    http_response_code(400); // Bad Request
+    echo "reCAPTCHA verification failed. Please try again.";
+    exit;
+}
+// --- End Recaptcha Verification ---
+
 // Define your recipient email address from .env (can be the same as for quotes or different)
 $receiving_email_address = $_ENV['RECEIVING_EMAIL']; 
 // You might want a separate contact email in .env, e.g., $_ENV['CONTACT_EMAIL']
