@@ -2,6 +2,7 @@
 * PHP Email Form Validation - v3.10
 * URL: https://bootstrapmade.com/php-email-form/
 * Author: BootstrapMade.com
+* Note: This file has been modified to support Google reCAPTCHA Enterprise
 */
 (function () {
   "use strict";
@@ -28,20 +29,20 @@
       let formData = new FormData( thisForm );
 
       if ( recaptcha ) {
-        if(typeof grecaptcha !== "undefined" ) {
-          grecaptcha.ready(function() {
+        // CORRECTED: Use grecaptcha.enterprise.ready() for the Enterprise API
+        // Added a check for typeof grecaptcha.enterprise to handle the new API structure
+        if(typeof grecaptcha.enterprise !== "undefined" ) {
+          grecaptcha.enterprise.ready(async function() {
             try {
-              grecaptcha.execute(recaptcha, {action: 'php_email_form_submit'})
-              .then(token => {
-                formData.set('recaptcha-response', token);
-                php_email_form_submit(thisForm, action, formData);
-              })
+              const token = await grecaptcha.enterprise.execute(recaptcha, {action: 'php_email_form_submit'});
+              formData.set('recaptcha-response', token);
+              php_email_form_submit(thisForm, action, formData);
             } catch(error) {
               displayError(thisForm, error);
             }
           });
         } else {
-          displayError(thisForm, 'The reCaptcha javascript API url is not loaded!')
+          displayError(thisForm, 'The reCAPTCHA Enterprise JavaScript API url is not loaded!');
         }
       } else {
         php_email_form_submit(thisForm, action, formData);
@@ -57,6 +58,10 @@
     })
     .then(response => {
       if( response.ok ) {
+        if (response.redirected) {
+          window.location.href = response.url;
+          return;
+        }
         return response.text();
       } else {
         throw new Error(`${response.status} ${response.statusText} ${response.url}`); 
@@ -64,7 +69,7 @@
     })
     .then(data => {
       thisForm.querySelector('.loading').classList.remove('d-block');
-      if (data.trim() == 'OK') {
+      if (data && data.trim() == 'OK') {
         thisForm.querySelector('.sent-message').classList.add('d-block');
         thisForm.reset(); 
       } else {
