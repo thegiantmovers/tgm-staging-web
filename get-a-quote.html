@@ -66,6 +66,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </head>
 
 <body class="get-a-quote-page">
+   <script>
+  function onClick(e) {
+    e.preventDefault();
+    grecaptcha.enterprise.ready(async () => {
+      const token = await grecaptcha.enterprise.execute('6LfpsJwrAAAAABUvR9u1dTf7NRlczZrCOabZdogM', {action: 'LOGIN'});
+    });
+  }
+</script>
 <!-- Body Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MNPKFLDN"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
