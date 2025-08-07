@@ -4,6 +4,7 @@
  *
  * This script processes the form submission from get-a-quote.html,
  * formats the data, and sends it as an email via SMTP using PHPMailer.
+ * It is designed to be compatible with BootstrapMade's validate.js.
  */
 
 // IMPORTANT: Adjust the path to PHPMailer's autoloader based on your installation method.
