@@ -31,6 +31,8 @@ src="https://www.facebook.com/tr?id=1728794787783083&ev=PageView&noscript=1"
   gtag('config', 'AW-16948058495');
 </script>
 
+<script src="https://www.google.com/recaptcha/enterprise.js?render=6LfpsJwrAAAAABUvR9u1dTf7NRlczZrCOabZdogM"></script>
+
 <!-- Google Tag Manager Header -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -75,7 +77,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </head>
 
 <body class="contact-page">
-
+<script>
+  function onClick(e) {
+    e.preventDefault();
+    grecaptcha.enterprise.ready(async () => {
+      const token = await grecaptcha.enterprise.execute('6LfpsJwrAAAAABUvR9u1dTf7NRlczZrCOabZdogM', {action: 'LOGIN'});
+    });
+  }
+</script>
   <!-- Body Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MNPKFLDN"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
