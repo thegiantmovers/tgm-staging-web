@@ -215,7 +215,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <div class="row g-0 justify-content-center" data-aos="fade-up" data-aos-delay="100">
           <div class="col-12 col-lg-10" data-aos="fade-up" data-aos-delay="200">
-            <form id="quoteForm" action="forms/send_quote.php" method="post" class="php-email-form">
+            <form id="quoteForm" action="forms/send_quote.php" method="post" class="php-email-form" data-recaptcha-site-key="6LfpsJwrAAAAABUvR9u1dTf7NRlczZrCOabZdogM">
               <h3>Request Your Moving Estimate</h3>
               <p>Provide us with details about your upcoming relocation in the UAE, and our team will prepare a precise and transparent quote for you.</p>
 
@@ -306,7 +306,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   <label for="phone" class="form-label visually-hidden">Your Phone Number (e.g., +971 50 123 4567)</label>
                   <input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone Number (e.g., +971 50 123 4567)" required autocomplete="tel">
                 </div>
-
+                
                 <div class="col-12">
                   <label for="additional_message" class="form-label visually-hidden">Tell us more about your specific moving requirements, any special items, or questions you may have.</label>
                   <textarea class="form-control" name="additional_message" id="additional_message" rows="6" placeholder="Tell us more about your specific moving requirements, any special items, or questions you may have." required></textarea>
@@ -316,7 +316,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   <div class="loading">Sending your request...</div>
                   <div class="error-message"></div>
                   <div class="sent-message">Your moving quote request has been sent successfully. Thank you!</div>
-
+                  <input type="hidden" name="recaptcha-response" id="recaptchaResponse">
                   <button type="submit">Get Your Free Quote</button>
                 </div>
 
