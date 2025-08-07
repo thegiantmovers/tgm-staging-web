@@ -2,7 +2,6 @@
 * PHP Email Form Validation - v3.10
 * URL: https://bootstrapmade.com/php-email-form/
 * Author: BootstrapMade.com
-* Note: This file has been modified to support Google reCAPTCHA Enterprise
 */
 (function () {
   "use strict";
@@ -29,9 +28,7 @@
       let formData = new FormData( thisForm );
 
       if ( recaptcha ) {
-        // CORRECTED: Use grecaptcha.enterprise.ready() for the Enterprise API
-        // Added a check for typeof grecaptcha.enterprise to handle the new API structure
-        if(typeof grecaptcha.enterprise !== "undefined" ) {
+        if(typeof grecaptcha.enterprise !== "undefined" ) { // Updated to grecaptcha.enterprise
           grecaptcha.enterprise.ready(async function() {
             try {
               const token = await grecaptcha.enterprise.execute(recaptcha, {action: 'php_email_form_submit'});
@@ -42,7 +39,7 @@
             }
           });
         } else {
-          displayError(thisForm, 'The reCAPTCHA Enterprise JavaScript API url is not loaded!');
+          displayError(thisForm, 'The reCaptcha Enterprise JavaScript API url is not loaded!');
         }
       } else {
         php_email_form_submit(thisForm, action, formData);
@@ -57,11 +54,13 @@
       headers: {'X-Requested-With': 'XMLHttpRequest'}
     })
     .then(response => {
+      // Check for a server-side redirect
+      if( response.ok && response.redirected ) {
+        window.location.href = response.url;
+        return; // Exit the promise chain
+      }
+      // If no redirect, assume an error or unexpected response
       if( response.ok ) {
-        if (response.redirected) {
-          window.location.href = response.url;
-          return;
-        }
         return response.text();
       } else {
         throw new Error(`${response.status} ${response.statusText} ${response.url}`); 
