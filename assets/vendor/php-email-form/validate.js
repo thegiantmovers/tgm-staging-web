@@ -2,6 +2,7 @@
 * PHP Email Form Validation - v3.10
 * URL: https://bootstrapmade.com/php-email-form/
 * Author: BootstrapMade.com
+* Note: This file has been modified to support Google reCAPTCHA Enterprise and server-side redirects.
 */
 (function () {
   "use strict";
@@ -28,7 +29,9 @@
       let formData = new FormData( thisForm );
 
       if ( recaptcha ) {
-        if(typeof grecaptcha.enterprise !== "undefined" ) { // Updated to grecaptcha.enterprise
+        // CORRECTED: Use grecaptcha.enterprise.ready() for the Enterprise API
+        // Check for the existence of grecaptcha.enterprise to avoid an error if the script isn't loaded
+        if(typeof grecaptcha.enterprise !== "undefined" ) { 
           grecaptcha.enterprise.ready(async function() {
             try {
               const token = await grecaptcha.enterprise.execute(recaptcha, {action: 'php_email_form_submit'});
@@ -39,7 +42,7 @@
             }
           });
         } else {
-          displayError(thisForm, 'The reCaptcha Enterprise JavaScript API url is not loaded!');
+          displayError(thisForm, 'The reCAPTCHA Enterprise JavaScript API url is not loaded!');
         }
       } else {
         php_email_form_submit(thisForm, action, formData);
@@ -54,19 +57,21 @@
       headers: {'X-Requested-With': 'XMLHttpRequest'}
     })
     .then(response => {
-      // Check for a server-side redirect
+      // Check for a server-side redirect (which is a successful submission)
       if( response.ok && response.redirected ) {
         window.location.href = response.url;
         return; // Exit the promise chain
       }
-      // If no redirect, assume an error or unexpected response
+      // If no redirect, assume an error or an unexpected response
       if( response.ok ) {
         return response.text();
       } else {
+        // Handle server errors (e.g., 400 Bad Request from PHP)
         throw new Error(`${response.status} ${response.statusText} ${response.url}`); 
       }
     })
     .then(data => {
+      // This block is for non-redirecting successful responses (e.g., 'OK' text)
       thisForm.querySelector('.loading').classList.remove('d-block');
       if (data && data.trim() == 'OK') {
         thisForm.querySelector('.sent-message').classList.add('d-block');
@@ -76,6 +81,7 @@
       }
     })
     .catch((error) => {
+      // This handles all types of errors (network, server-side, redirect failures)
       displayError(thisForm, error);
     });
   }
